@@ -3,16 +3,16 @@
 .title {
   font-family: "Sen", sans-serif;
 }
+#phone-details {
+  width: 60%;
+}
+#phone-details img {
+  width: 55%;
+}
+
 #search-result img {
   width: 70%;
 }
 .card {
   border-radius: 15px;
-}
-.details-button {
-  padding: 7px 10px;
-  border-radius: 5px;
-  border: 0;
-  color: white;
-  background-color: rgb(58, 58, 58);
 }
