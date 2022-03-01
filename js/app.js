@@ -25,7 +25,7 @@ const displaySearchResult = (phones, text) => {
   const searchResult = document.getElementById("search-result");
   searchResult.textContent = "";
 
-  phones?.slice(0, 20).forEach((phone) => {
+  phones.slice(0, 20).forEach((phone) => {
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
@@ -65,6 +65,9 @@ const displayPhoneDetails = (phone) => {
   <img src="${phone.image}" class="card-img-top me-3" alt="..." />
     <div class="card-body justify-content-center ms-2">
         <h5 class="card-title fw-bold fs-3">${phone.name}</h5>
+        <h6><span class="fw-bold fs-5">Release Date: </span>${
+          phone.releaseDate ? phone.releaseDate : "No Release Date"
+        }</h6>
         <p class="card-text mb-0">
             <span class="fw-bold">Storage: </span>${
               phone.mainFeatures.storage
