@@ -1,26 +1,22 @@
 /* Search */
 const searchPhone = () => {
   const searchField = document.getElementById("search-field");
+
+  /* Spinner On */
+  toggleSpinnerOn();
+
   const searchText = searchField.value;
   /* Load Data */
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displaySearchResult(data.data, searchText));
+    .then((data) => displaySearchResult(data.data));
 
   searchField.value = "";
 };
 
-/* Spinner */
-const toggleSpinner = (displayStyle) => {
-  document.getElementById("spinner").style.display = displayStyle;
-};
-const toggleSearchResult = (displayStyle) => {
-  document.getElementById("search-result").style.display = displayStyle;
-};
-
 /* Show Result */
-const displaySearchResult = (phones, text) => {
+const displaySearchResult = (phones) => {
   //   console.log(phones);
   const searchResult = document.getElementById("search-result");
   searchResult.textContent = "";
@@ -41,6 +37,9 @@ const displaySearchResult = (phones, text) => {
             </div>
         `;
     searchResult.appendChild(div);
+
+    /* Spinner Off */
+    toggleSpinnerOff();
   });
 };
 
@@ -59,11 +58,18 @@ const displayPhoneDetails = (phone) => {
   const phoneDetails = document.getElementById("phone-details");
   phoneDetails.textContent = "";
   const div = document.createElement("div");
-  div.classList.add("card", "shadow", "border-0", "p-3", "flex-row");
+  div.classList.add(
+    "card",
+    "shadow",
+    "border-0",
+    "p-3",
+    "flex-row",
+    "justify-content-center"
+  );
   div.innerHTML = `
-  <div class="m-3 d-flex">
-  <img src="${phone.image}" class="card-img-top me-3" alt="..." />
-    <div class="card-body justify-content-center ms-2">
+  <div class="m-3 d-flex w-100">
+  <img src="${phone.image}" class="card-img-top" alt="..." />
+    <div class="card-body justify-content-center ms-4">
         <h5 class="card-title fw-bold fs-3">${phone.name}</h5>
         <h6><span class="fw-bold fs-5">Release Date: </span>${
           phone.releaseDate ? phone.releaseDate : "No Release Date"
@@ -102,7 +108,7 @@ const displayPhoneDetails = (phone) => {
                   phone.others?.Radio ? phone.others.Radio : "Not found"
                 } </br>
                 <span class="fw-bold">USB: </span>${
-                  phone.others?.USB ? phone.others.USb : "Not found"
+                  phone.others?.USB ? phone.others.USB : "Not found"
                 } </br>
             </div>
         </p>
@@ -110,4 +116,13 @@ const displayPhoneDetails = (phone) => {
   </div>
   `;
   phoneDetails.appendChild(div);
+};
+
+/* Spinner */
+const toggleSpinnerOn = () => {
+  document.getElementById("spinner").style.display = "block";
+  document.getElementById("search-result").textContent = "";
+};
+const toggleSpinnerOff = () => {
+  document.getElementById("spinner").style.display = "none";
 };

@@ -3,12 +3,13 @@
 .title {
   font-family: "Sen", sans-serif;
 }
-#phone-details {
-  width: 60%;
+#spinner {
+  display: none;
 }
-#phone-details img {
+#phone-details {
   width: 55%;
 }
+
 #search-result img {
   width: 70%;
 }
