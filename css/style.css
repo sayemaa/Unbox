@@ -10,9 +10,35 @@
   width: 55%;
 }
 
+.phone-details-container {
+  display: flex;
+}
+
 #search-result img {
   width: 70%;
 }
 .card {
   border-radius: 15px;
+}
+/* Mobile Device */
+@media only screen and (max-width: 688px) {
+  body,
+  html {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  #phone-details {
+    width: 90%;
+  }
+  .phone-details-container {
+    flex-direction: column;
+  }
+  .phone-details-img {
+    width: 80%;
+    padding-left: 65px;
+    margin-bottom: 15px;
+  }
+  .phone-container-text {
+    padding-right: 10px;
+  }
 }

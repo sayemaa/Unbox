@@ -13,11 +13,12 @@ const searchPhone = () => {
     .then((data) => displaySearchResult(data.data));
 
   searchField.value = "";
+  document.getElementById("phone-details").textContent = "";
 };
 
 /* Show Result */
 const displaySearchResult = (phones) => {
-  //   console.log(phones);
+  //   console.log(phones.length);
   const searchResult = document.getElementById("search-result");
   searchResult.textContent = "";
 
@@ -25,17 +26,17 @@ const displaySearchResult = (phones) => {
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
-        <div class="card h-100 text-center shadow border-0">
-              <img src="${phone.image}" class="card-img-top p-4 mx-auto" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">${phone.phone_name}</h5>
-                <p class="card-text">
-                  Brand: ${phone.brand}
-                </p>
-                <button onclick="loadPhoneDetails('${phone.slug}')" class="details-button btn btn-dark">See Details</button>
+          <div class="card h-100 text-center shadow border-0">
+                <img src="${phone.image}" class="card-img-top p-4 mx-auto" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">${phone.phone_name}</h5>
+                  <p class="card-text">
+                    Brand: ${phone.brand}
+                  </p>
+                  <button onclick="loadPhoneDetails('${phone.slug}')" class="details-button btn btn-dark">See Details</button>
+                </div>
               </div>
-            </div>
-        `;
+          `;
     searchResult.appendChild(div);
 
     /* Spinner Off */
@@ -60,16 +61,16 @@ const displayPhoneDetails = (phone) => {
   const div = document.createElement("div");
   div.classList.add(
     "card",
-    "shadow",
+    "shadow-lg",
     "border-0",
     "p-3",
     "flex-row",
     "justify-content-center"
   );
   div.innerHTML = `
-  <div class="m-3 d-flex w-100">
-  <img src="${phone.image}" class="card-img-top" alt="..." />
-    <div class="card-body justify-content-center ms-4">
+  <div class="phone-details-container m-3 w-100">
+  <img src="${phone.image}" class="phone-details-img card-img-top" alt="..." />
+    <div class="phone-container-text card-body justify-content-center">
         <h5 class="card-title fw-bold fs-3">${phone.name}</h5>
         <h6><span class="fw-bold fs-5">Release Date: </span>${
           phone.releaseDate ? phone.releaseDate : "No Release Date"
