@@ -1,4 +1,4 @@
-/* Search */
+/* Search Phones */
 const searchPhone = () => {
   const searchField = document.getElementById("search-field");
 
@@ -6,7 +6,7 @@ const searchPhone = () => {
   toggleSpinnerOn();
 
   const searchText = searchField.value;
-  /* Load Data */
+  /* Load Phones */
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   fetch(url)
     .then((res) => res.json())
@@ -18,11 +18,12 @@ const searchPhone = () => {
 
 /* Show Result */
 const displaySearchResult = (phones) => {
-  // console.log(phones.length);
+  /* console.log(phones.length); */
   if (phones.length === 0) {
     document.getElementById("error-message").innerHTML = `
     <p>No phones found</p>
     `;
+
     /* Spinner Off */
     toggleSpinnerOff();
   } else {
@@ -53,10 +54,9 @@ const displaySearchResult = (phones) => {
   }
 };
 
-/* Details */
+/* Load Details */
 const loadPhoneDetails = (phoneId) => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
-  //   console.log(url);
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayPhoneDetails(data.data));
@@ -64,7 +64,7 @@ const loadPhoneDetails = (phoneId) => {
 
 /* Show Details */
 const displayPhoneDetails = (phone) => {
-  //   console.log(phone);
+  /*  console.log(phone); */
   const phoneDetails = document.getElementById("phone-details");
   phoneDetails.textContent = "";
   const div = document.createElement("div");

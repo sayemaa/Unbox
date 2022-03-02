@@ -9,17 +9,16 @@
 #phone-details {
   width: 55%;
 }
-
 .phone-details-container {
   display: flex;
 }
-
 #search-result img {
   width: 70%;
 }
 .card {
   border-radius: 15px;
 }
+
 /* Mobile Device */
 @media only screen and (max-width: 688px) {
   body,
